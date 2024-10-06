@@ -1,0 +1,54 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    color: white;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+.main_content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 600px;
+    height: 300px;
+    margin: 0 auto;
+    margin-top: 400px;
+    background-color: rgb(92, 91, 92);
+    border: 1px solid white;
+    box-shadow: 10px 10px  rgb(2, 177, 31);
+}
+h1{
+    background-color: transparent;
+    color:white;
+    font-family:cursive;
+    padding: 10px;
+}
+.tiempo,
+.kilometros{
+    display: flex;
+    background-color: transparent;
+    padding: 5px;
+    margin-left: 10px;
+}
+.kilometros{
+    margin-left: -18px;
+}
+.buttom{
+    width: 220px;
+    background-color: bisque;
+    margin-left: 75px;
+}
+.buttom:hover{
+    cursor: pointer;
+    background-color: rgb(11, 242, 150);
+    
+}
+.buttom:active{
+    background-color: bisque;
+    
+}
+.promedio{
+    margin-left: 80px;
+}

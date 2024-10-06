@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>promedioKm</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div class="main_content">
+        <h1 class="title">Promedio x km</h1>
+        <div class="tiempo">
+            <label style="background-color: transparent; color: white; font-size: 20px; padding-right: 5px;">Tiempo</label>
+            <input style="width: 220px; background-color: whitesmoke; color: black;" type="number" name="number" id="tiempo" placeholder="Ej: 3 minutos 20 segundos = 3.2"/>
+        </div>
+        <div class="kilometros">
+            <label style="background-color: transparent; color: white; font-size: 20px; padding-right: 5px;">Kilometros</label>
+            <input style="width: 220px; background-color: whitesmoke; color: black;" type="number" name="number" id="kilometros" placeholder="Ej: 5 kilometros 100 metros = 5.1"/>
+        </div>
+        <button style="color: black; font-size: 20px; padding-right: 5px;" class="buttom" type="submit" id="calcular" >calcular</button>
+        <div class="promedio" id="promedio" style="background-color: transparent;">
+            <h2 style="background-color: transparent; color: white; padding: 5px;">Promedio x km:</h2>
+            <p id="resultado" style="background-color: transparent; color: white;"></p>
+        </div>
+    </div>
+    <script>
+        // Capturamos el botón y los campos de input
+    const tiempoInput = document.getElementById('tiempo');
+    const kilometrosInput = document.getElementById('kilometros');
+    const resultadoElement = document.getElementById('resultado');
+
+    // Función para calcular el promedio por km
+    function resultado() {
+        // Obtenemos los valores de los inputs
+        const tiempoStr = tiempoInput.value;
+        const kilometros = parseFloat(kilometrosInput.value);
+
+        // Validamos que los campos tengan valores válidos
+        if (!tiempoStr || isNaN(kilometros) || kilometros <= 0) {
+            resultadoElement.innerText = "Por favor ingresa valores válidos.";
+            return;
+        }
+
+        // Separamos el tiempo en minutos y segundos (formato mm.ss)
+        const tiempoPartes = tiempoStr.split('.');
+        const minutos = parseInt(tiempoPartes[0], 10);
+        const segundos = parseInt(tiempoPartes[1], 10);
+
+        // Convertimos todo el tiempo a segundos
+        const tiempoTotalSegundos = (minutos * 60) + segundos;
+
+        // Calculamos el tiempo promedio por kilómetro
+        const tiempoPorKmSegundos = tiempoTotalSegundos / kilometros;
+
+        // Convertimos el tiempo por kilómetro a minutos y segundos
+        const minutosPorKm = Math.floor(tiempoPorKmSegundos / 60);
+        let segundosPorKm = Math.round(tiempoPorKmSegundos % 60);
+
+        // Aseguramos que los segundos tengan dos dígitos
+        segundosPorKm = segundosPorKm < 10 ? '0' + segundosPorKm : segundosPorKm;
+
+        // Mostramos el resultado en el HTML
+        resultadoElement.innerText = `${minutosPorKm}:${segundosPorKm} min*km`;
+
+        // Cambiamos la visibilidad a visible
+        promedioDiv.style.visibility = 'visible';
+    }
+
+    // Asignamos el evento al botón
+    document.querySelector('button').addEventListener('click', resultado);
+    </script>
+    
+</body>
+</html>
